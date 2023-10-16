@@ -1,3 +1,4 @@
+
 <!DOCTYPE html> 
 <html> 
 <head>
@@ -64,5 +65,198 @@ button {
     </form>   
 </body>   
 </html>
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login Page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:600|Noto+Sans|Open+Sans:400,700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        font-family: sans-serif;
+        justify-content: center;
+        background: linear-gradient(to right, #00dbde, #fc00ff);
+        transition: all 0.3s ease;
+      }
+      .container {
+        position: relative;
+        width: 402px;
+        background: white;
+        padding: 60px 40px;
+      }
+      header {
+        font-size: 40px;
+        margin-bottom: 60px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .input-field,
+      form .button {
+        margin: 25px 0;
+        position: relative;
+        height: 50px;
+        width: 100%;
+      }
+      .input-field input {
+        height: 100%;
+        width: calc(100% - 30px);
+        border: 1px solid silver;
+        padding-left: 15px;
+        outline: none;
+        font-size: 19px;
+        transition: 0.4s;
+      }
+      input:focus {
+        border: 1px solid #1da1f2;
+      }
+      .input-field label,
+      span.show {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .input-field label {
+        left: 15px;
+        pointer-events: none;
+        color: grey;
+        font-size: 18px;
+        transition: 0.4s;
+        background: white;
+        padding: 0 5px;
+      }
+      span.show {
+        right: 20px;
+        color: #111;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+        visibility: hidden;
+        font-family: "Open Sans", sans-serif;
+      }
+      input:valid ~ span.show {
+        visibility: visible;
+      }
+      input:focus ~ label,
+      input:valid ~ label {
+        transform: translateY(-33px);
+        font-size: 16px;
+        color: #1da1f2;
+      }
+      form .button {
+        margin-top: 30px;
+        overflow: hidden;
+        z-index: 111;
+        position: relative;
+        height: 50px;
+        width: 100%;
+      }
+      .button .inner {
+        background: linear-gradient(to right, #00dbde, #3b74ca, #fc00ff);
+        color: white;
 
- 
+        position: absolute;
+        height: 100%;
+        width: 300%;
+        left: -100%;
+        z-index: -1;
+
+
+        transition: all 0.4s;
+      }
+      .button:hover .inner {
+        left: 0;
+      }
+      .button button {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: none;
+        outline: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+      }
+      .container .auth {
+        margin: 25px 0;
+        font-size: 19px;
+        color: grey;
+      }
+      .links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .cancelbtn {
+        background: linear-gradient(to right, #00dbde, #3b74ca, #fc00ff);
+        color: white;
+        padding: 15px;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        font-family: "Noto Sans", sans-serif;
+        margin-top: 25px;
+        transition: all 0.4s;
+      }
+      .signup a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      .signup a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>Student Login Form</header>
+      <form>
+        <div class="input-field">
+          <!-- <label>Username:</label> -->
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            required
+          />
+        </div>
+        <div class="input-field">
+          <!-- <label>Password:</label> -->
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            required
+          />
+        </div>
+        <div class="button">
+          <div class="inner"></div>
+          <button type="submit">Login</button>
+        </div>
+        <div class="auth">
+          <input type="checkbox" checked="checked" /> Remember me
+        </div>
+        <button type="button" class="cancelbtn">Cancel</button>
+        <div class="links">
+          Forgot <a href="#">password?</a>
+          <div class="signup">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+#include<iostream>
+useing namespace std;
+
+int main()
+{
+    
+    return 0;
+}
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<pair<int,string>>arr = {{1000000000,"Billion "}, {1000000,"Million "}, {1000,"Thousand "}, {100,"Hunded "},
+ {90,"Ninety "}, {80,"Eighty "}, {70,"Seventy "}, {60,"Sixty "}, {50,"Fifty "}, {40,"Forty "}, {30,"Thirty "}, {20,"Twenty "},
+ {19,"Nineteen "}, {18,"Eighteen "}, {17,"Seventeen "}, {16,"Sixteen "}, {15,"Fifteen "}, {14,"Fourteen "}, {13,"Thirteen "},
+ {12,"Twelve "}, {11,"Eleven "}, {10,"Ten "}, {9,"Nine "}, {8,"Eight "}, {7,"Seven "}, {6,"Six "}, {5,"Five "}, {4,"Four "},
+ {3,"Three "}, {2,"Two "}, {1,"One "}};
+
+  string solve(int n){
+    if(n==0){
+        return "Zero ";
+    }
+    if(n>=10000000000){
+        return "Invalid input please enter less than Billion";
+    }
+    for(auto i: arr){
+        if(n >= i.first){
+            string first = (n>=100 ? solve(n/i.first) : "");
+            string second = i.second;
+            string remAns = (n%i.first == 0 ? "" : solve(n % i.first));
+
+            return first + second + remAns;
+        }
+    }
+    return "";
+}
+int main()
+{
+    int n;
+    cout<<"enter number"<<endl;
+    cin>>n;
+    string ans = solve(n);
+    ans.pop_back();
+    cout<<endl<<ans<<endl;
+    return 0;
+}

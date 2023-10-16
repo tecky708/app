@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up page</title>
+    
+    <style>
+      *{
+    box-sizing:border-box;
+    
+    
+    
+    
+}
+
+
+body{
+    
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 15px 30px ;
+    padding: 8px;
+}
+.all{
+    background-color: #87a5ca3d;
+    padding: 20px 20px 20px 20px;
+    border: 7px solid #7a9aa074 ;
+    border-radius: 5px;
+}
+h1{
+    
+    margin: 0%;
+
+    text-align: center;
+}
+h5{
+    
+    margin: 2%;
+
+    text-align: center;
+}
+input[type = "text"],
+input[type = "email"],
+input[type = "password"],
+input[type = "number"],
+input[type = "date"],
+
+textarea,select{
+    width: 100%;
+    
+    padding: .5%;
+    border: 1px solid #87a5ca3d;
+    border-radius: 5px;
+}
+input[type="submit"]{
+    font-size: 20px;
+    margin: 0 auto;
+    background-color: rgba(63, 92, 209, 0.86);
+    color: rgb(255, 255, 255);
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+}
+
+fieldset{
+    background-color: #fff;
+    border: #fff;
+    border-radius: 5px;
+    height: 75px;
+
+}
+
+hdr{
+    text-align: center ;
+}
+
+/* .submit{
+    font-size: 20px;
+    
+    margin: 0 auto;
+   
+    background-color: rgba(63, 92, 209, 0.86);
+    color: rgb(255, 255, 255);
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+} */
+@media screen and ( min-width : 600px) and (max-width : 700px){
+    input[type="submit"]{
+        background-color: #07d0f4f9;
+    }
+    
+}
+
+
+    </style>
+  </head>
+  <body>
+    
+    <div class="all">
+      
+      <form action="" method="get">
+        <h1> Contact Information</h1>
+        <h5>Please Fill all the fields with appropriate Information</h5>
+        <p>
+          First Name:
+          <input
+            type="text"
+            required
+            name="firstname"
+            placeholder="First Name"
+          />
+        </p>
+        <p>
+          Last Name:
+          <input type="text" required name="lastname" placeholder="Last Name" />
+        </p>
+        <p class="gndr">
+           <fieldset>
+          <legend>Gender</legend>
+          <p>
+            Male <input type="radio" name="gender"  required  /> 
+            Female<input type="radio" name="gender" id="" required/>
+            Trans<input type="radio" name="gender" id="" required/>
+          </p>
+          </fieldset>
+        </p>
+        <P class="addd"> 
+            Address: <textarea name="address" id="address" cols="100" rows="7" placeholder="Type your full address" required  ></textarea>
+        </P>
+        <p>
+            Pincode : <input type="text" inputmode="numeric" pattern="[0-9]{6}"  maxlength="6" name="Pincode"/>
+        </p>
+        <p>
+            Email Address : <input type="email"  name ="email" id = "email" placeholder="example@abc.com" required>
+        </p>
+
+        
+
+         <div class="submit"><input type="submit"></div>
+
+      </form>
+    </div>
+  </body>
+</html>

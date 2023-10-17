@@ -1,193 +1,170 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login Page</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css?family=Montserrat:600|Noto+Sans|Open+Sans:400,700&display=swap");
-      * {
-        margin: 0;
-        padding: 0;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
-      body {
+<!DOCTYPE html> 
+<html> 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Login Page </title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style> 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+Body {
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: pink;
+}
+button { 
+       background-color: #4c5eaf; 
+       width: 100%;
+        color: orange; 
+        padding: 15px; 
+        margin: 10px 0px; 
+        border: none; 
+        cursor: pointer; 
+         } 
+ form { 
+        border: 3px solid #f1f1f1; 
+    } 
+ input[type=text], input[type=password] { 
+        width: 100%; 
+        margin: 8px 0;
+        padding: 12px 20px; 
+        display: inline-block; 
+        border: 2px solid rgb(41, 64, 124); 
+        box-sizing: border-box; 
+    }
+ button:hover { 
+        opacity: 0.7; 
+    } 
+  .cancelbtn { 
+        width: auto; 
+        padding: 10px 18px;
+        margin: 10px 5px;
+    } 
+      
+   
+ .container { 
+        padding: 25px; 
+        background-color: black;
+    } 
+
+    
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+    background-color: rgb(22, 7, 36);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    line-height: 5rem;
+}
+
+.left h1 {
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.checkBtn {
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+.checkBtn {
+    cursor: pointer;
+    font-size: 30px;
+    float: right;
+    color: #ed1e79;
+    line-height: 80px;
+}
+
+.right ul {
+    display: flex;
+    list-style: none;
+}
+
+.right ul li a {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 1s;
+}
+
+.right ul li a:hover {
+    background-color: #fff;
+    border-radius: 7px;
+    color: rgb(22, 7, 36);
+}
+
+
+@media screen and (max-width:805px) {
+    .list {
+        width: 100%;
         height: 100vh;
-        display: flex;
-        align-items: center;
+        background-color: rgb(22, 7, 36);
         text-align: center;
-        font-family: sans-serif;
-        justify-content: center;
-        background: linear-gradient(to right, #00dbde, #fc00ff);
-        transition: all 0.3s ease;
-      }
-      .container {
-        position: relative;
-        width: 402px;
-        background: white;
-        padding: 60px 40px;
-      }
-      header {
-        font-size: 40px;
-        margin-bottom: 60px;
-        font-family: "Montserrat", sans-serif;
-      }
-      .input-field,
-      form .button {
-        margin: 25px 0;
-        position: relative;
-        height: 50px;
-        width: 100%;
-      }
-      .input-field input {
-        height: 100%;
-        width: calc(100% - 30px);
-        border: 1px solid silver;
-        padding-left: 15px;
-        outline: none;
-        font-size: 19px;
-        transition: 0.4s;
-      }
-      input:focus {
-        border: 1px solid #1da1f2;
-      }
-      .input-field label,
-      span.show {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .input-field label {
-        left: 15px;
-        pointer-events: none;
-        color: grey;
-        font-size: 18px;
-        transition: 0.4s;
-        background: white;
-        padding: 0 5px;
-      }
-      span.show {
-        right: 20px;
-        color: #111;
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-        user-select: none;
-        visibility: hidden;
-        font-family: "Open Sans", sans-serif;
-      }
-      input:valid ~ span.show {
-        visibility: visible;
-      }
-      input:focus ~ label,
-      input:valid ~ label {
-        transform: translateY(-33px);
-        font-size: 16px;
-        color: #1da1f2;
-      }
-      form .button {
-        margin-top: 30px;
-        overflow: hidden;
-        z-index: 111;
-        position: relative;
-        height: 50px;
-        width: 100%;
-      }
-      .button .inner {
-        background: linear-gradient(to right, #00dbde, #3b74ca, #fc00ff);
-        color: white;
-
-        position: absolute;
-        height: 100%;
-        width: 300%;
-        left: -100%;
-        z-index: -1;
-
-        transition: all 0.4s;
-      }
-      .button:hover .inner {
-        left: 0;
-      }
-      .button button {
-        width: 100%;
-        height: 100%;
-        border: none;
-        background: none;
-        outline: none;
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-        font-family: "Montserrat", sans-serif;
-      }
-      .container .auth {
-        margin: 25px 0;
-        font-size: 19px;
-        color: grey;
-      }
-      .links {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-      }
-      .cancelbtn {
-        background: linear-gradient(to right, #00dbde, #3b74ca, #fc00ff);
-        color: white;
-        padding: 15px;
-        width: 100%;
-        border: none;
-        cursor: pointer;
-        font-family: "Noto Sans", sans-serif;
-        margin-top: 25px;
-        transition: all 0.4s;
-      }
-      .signup a {
-        color: #3498db;
-        text-decoration: none;
-      }
-      .signup a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
+        position: fixed;
+        top: 4rem;
+        left: 100%;
+        transition: all 1s;
+    }
 
-  <body>
-    <div class="container">
-      <header>Student Login Form</header>
-      <form>
-        <div class="input-field">
-          <!-- <label>Username:</label> -->
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="username"
-            required
-          />
+    #check {
+        display: none;
+    }
+
+    .checkBtn {
+        display: block;
+    }
+
+    #check:checked~ul {
+        left: 0%;
+    }
+
+}
+</style> 
+</head>  
+<body>  
+    <nav class="navbar">
+        <div class="left">
+            <h1>student login<h1>
         </div>
-        <div class="input-field">
-          <!-- <label>Password:</label> -->
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            required
-          />
+        <div class="right">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkBtn">
+                <i class="fa fa-bars"></i>
+            </label>
+            <ul class="list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About us</a></li>
+                
+            </ul>
         </div>
-        <div class="button">
-          <div class="inner"></div>
-          <button type="submit">Login</button>
-        </div>
-        <div class="auth">
-          <input type="checkbox" checked="checked" /> Remember me
-        </div>
-        <button type="button" class="cancelbtn">Cancel</button>
-        <div class="links">
-          Forgot <a href="#">password?</a>
-          <div class="signup">
-            <p>Don't have an account? <a href="#">Sign up</a></p>
-          </div>
-        </div>
-      </form>
-    </div>
-  </body>
+    </nav>
+    <form>
+        <div class="container"> 
+            <label>Username : </label> 
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <label>Password : </label> 
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <button type="submit">Login</button> 
+            <input type="checkbox" checked="checked"> Remember me 
+            <button type="button" class="cancelbtn"> Cancel</button> <h1></h1>
+            Forgot <a href="#"> password? </a> 
+        </div> 
+    </form>   
+</body>   
 </html>

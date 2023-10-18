@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <form action="/add" method="post">
+      <input
+        type="text"
+        name="text"
+        id="text"
+        placeholder="New Task"
+        required
+      />
+      <button type="submit">Add</button>
+    </form>
+    <% if (tasks.length > 0) { %>
+    <ul>
+      <% tasks.forEach((task, index) => { %>
+      <li>
+        <form action="/delete" method="post">
+          <input
+            type="hidden"
+            name="index"
+            id="index"
+            value="<%= task._id %>"
+          />
+          <h3 style="display: inline"><%= task.text %></h3>
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+    <% } else { %>
+    <p>No Tasks Yet.</p>
+    <% } %>
+  </body>
+</html>

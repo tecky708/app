@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>E-Commerce Store</h1>
+    </header>
+
+    <div class="product-list">
+        <div class="product">
+            <img src="product1.jpg" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>Description of Product 1.</p>
+            <span class="price">$19.99</span>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="product2.jpg" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>Description of Product 2.</p>
+            <span class="price">$29.99</span>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- More product listings here -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

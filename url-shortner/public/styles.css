@@ -1,0 +1,80 @@
+/* Reset some default styles to provide a clean slate */
+body,
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply a background color and font to the entire body */
+body {
+  font-family: "Helvetica", sans-serif;
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style the header with a background color and text color */
+h1 {
+  color: #007bff;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form container */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Style the input field */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Style the submit button */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Change button color on hover */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Style the error message */
+.error {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ffcccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+}
+
+/* Style the shortened URL */
+.shortened-url {
+  font-size: 18px; /* Increase font size for visibility */
+  margin-top: 20px; /* Add spacing above the shortened URL */
+  color: #007bff; /* Blue text color */
+  word-break: break-all; /* Break long URLs into multiple lines */
+}

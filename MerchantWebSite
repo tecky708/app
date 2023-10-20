@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchant Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #258cd1;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Merchant Webpage</h1>
+    </header>
+    <div class="container">
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ70-b6qFnsrp2tJ5a5dteP_oGrrxWPR3JMQ&usqp=CAU" alt="Product 1">
+            <h2>Millets</h2>
+            <p>Millets are highly nutritious and are a good source of carbohydrates, fiber, vitamins (especially B-complex vitamins), minerals (iron, calcium, magnesium), and antioxidants. They are also gluten-free, making them suitable for those with gluten sensitivities.</p>
+            <p class="price">$3.29</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.poshtik.in/cdn/shop/products/com1807851487263barley_Poshtik_c1712f8e-6b63-4231-9596-a49ce84f26ba.png?v=1626004318" alt="Product 2">
+            <h2>Barley</h2>
+            <p>Barley is a versatile grain that can be used in various dishes, including soups, stews, salads, and as a side dish. It's particularly known for its role in barley soup and as a key ingredient in malted products like beer and malted beverages.</p>
+            <p class="price">$5.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <!-- More product listings go here -->
+    </div>
+    <footer>
+        &copy; 2023 Merchant Webpage. All rights reserved.
+    </footer>
+</body>
+</html>

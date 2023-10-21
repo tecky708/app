@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Calibri, Helvetica, sans-serif;
-            background-color: pink;
+            background: linear-gradient(90deg, #ffffff, #f2f2f2);
         }
 
         button {
@@ -17,14 +17,17 @@
             margin: 10px 0px;
             border: none;
             cursor: pointer;
+            border-radius: 15px;
         }
 
         form {
-            border: 3px solid #f1f1f1;
-            max-width: 300px;
-            margin: 0 auto;
-            padding: 20px;
+            border-radius: 15px;
+            max-width: 340px;
+            margin: 50px auto;
+
+            padding: 5px 15px;
             background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         input[type="text"],
@@ -34,6 +37,7 @@
             padding: 12px 20px;
             display: block; /* Changed from inline-block to block */
             border: 2px solid green;
+            border-radius: 15px;
             box-sizing: border-box;
         }
 
@@ -60,11 +64,13 @@
     </style>
 </head>
 <body>
-    <center>
-        <h1>Student Registration Form</h1>
-    </center>
+    <!-- <center>
+        
+    </center> -->
     <form>
         <div class="container">
+            <h2>Student Registration Form</h2>
+            <hr>
             <label for="username">Username:</label>
             <input type="text" id="username" placeholder="Enter Username" name="username" required>
             <label for="password">Password:</label>

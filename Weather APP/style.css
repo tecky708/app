@@ -1,0 +1,304 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #000;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #000 60%, #1c425a);
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    filter: drop-shadow(0 10px 50px rgba(0, 0, 0, 0.8));
+}
+
+.left-sec {
+    width: 300px;
+    height: 450px;
+    /* border: 2px solid; */
+    background: url(day18BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    padding: 30px;
+    transition: 0.3s;
+    z-index: 1;
+}
+
+.day {
+    position: relative;
+}
+
+.day>h2 {
+    font-size: 30px;
+    font-weight: 750;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.day>p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.day .location {
+    margin-top: 5px;
+}
+
+.location>ion-icon {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+}
+
+.location>p {
+    font-size: 14px;
+    margin-left: 17px;
+}
+
+.temp {
+    position: relative;
+    top: 108px;
+}
+
+.temp>ion-icon {
+    width: 90px;
+    height: 90px;
+}
+
+.temp>h1 {
+    font-size: 60px;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.temp>p {
+    font-size: 18px;
+    margin-left: 7px;
+    margin-top: 5px;
+    text-shadow: 2px 2px 10px #000;
+    font-weight: 800;
+}
+
+.left-sec:hover {
+    transform: perspective(300px) rotateY(5deg) scale(1.08);
+}
+
+.rgt-sec {
+    position: relative;
+    width: 310px;
+    height: 420px;
+    background-color: #172336;
+    padding: 35px;
+    border-radius: 0 25px 25px 0;
+}
+
+.data * {
+    display: flex;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    padding-right: 35px;
+}
+
+.data-element>p {
+    position: absolute;
+    right: 0;
+    font-weight: normal;
+    color: #a1a1a1;
+}
+
+.card {
+    display: flex;
+    margin-top: 70px;
+    background-color: #141f31;
+    width: 100%;
+    box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.card .card1 {
+    height: 100px;
+    width: 25%;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: 0.2s;
+    color: #172336;
+}
+
+.card .card1:hover,
+.card .card1:active {
+    transform: scale(1.08);
+}
+
+.card .card2 {
+    height: 100px;
+    width: 25%;
+    transition: 0.2s;
+}
+
+.card .card2:hover,
+.card .card2:active {
+    border-radius: 8px;
+    background-color: #fff;
+    color: #172336;
+    transform: scale(1.08);
+}
+
+.card .card3 {
+    height: 100px;
+    width: 25%;
+    transition: 0.2s;
+}
+
+.card .card3:hover,
+.card .card3:active {
+    border-radius: 8px;
+    background-color: #fff;
+    color: #172336;
+    transform: scale(1.08);
+}
+
+.card .card4 {
+    height: 100px;
+    width: 25%;
+    transition: 0.2s;
+}
+
+.card .card4:hover,
+.card .card4:active {
+    border-radius: 8px;
+    background-color: #fff;
+    color: #172336;
+    transform: scale(1.08);
+}
+
+.card * {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.card .card-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.card h4 {
+    margin-bottom: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 50px;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 50px;
+    transition: 0.5s;
+    animation: move 5s linear infinite;
+}
+
+button>ion-icons {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+@keyframes move {
+    0%,
+    100% {
+        background: #01f5f5;
+    }
+    50% {
+        background: #8e3af6;
+    }
+}
+
+button:hover,
+button:active {
+    background-color: #01f5f5;
+    box-shadow: 0 0 20px 10px #01f5f5;
+    animation: none;
+}
+
+/* lets make it responsive */
+
+@media (max-width: 700px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+
+    .container {
+        height: 100%;
+        display: grid;
+        place-items: center;
+        padding: 0;
+    }
+
+    .left-sec {
+        height: 200px;
+        display: flex;
+    }
+
+    .left-sec:hover {
+        transform: none;
+    }
+
+    .left-sec .temp {
+        transform: translateY(-100px);
+        display: flex;
+    }
+
+    .temp>ion-icon {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: -15%;
+        left: 90px;
+    }
+
+    .temp>h1 {
+        position: absolute;
+        font-size: 40px;
+        top: 20%;
+        left: 35px;
+    }
+
+    .temp>p {
+        position: absolute;
+        left: 55px;
+        top: 80px;
+    }
+
+    .rgt-sec {
+        position: relative;
+        top: -10%;
+        border-radius: 0 0 25px 25px ;
+        height: 100%;
+    }
+
+    .rgt-sec .card * {
+        transition: none;
+    }
+}

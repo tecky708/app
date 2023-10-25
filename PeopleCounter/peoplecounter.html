@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/CSS/peopleCounter.css">
+    <title>Counter</title>
+
+    <style>
+    *,*::before, *::after{
+       box-sizing: border-box;
+    }
+    
+    .eth-card {
+    background-color:#a099ff;
+    background-image: 
+    radial-gradient(at 83% 67%, rgb(152, 231, 156) 0, transparent 58%), 
+    radial-gradient(at 67% 20%, hsla(357,94%,71%,1) 0, transparent 59%), 
+    radial-gradient(at 88% 35%, hsla(222,81%,65%,1) 0, transparent 50%), 
+    radial-gradient(at 31% 91%, hsla(9,61%,61%,1) 0, transparent 52%), 
+    radial-gradient(at 27% 71%, hsla(336,91%,65%,1) 0, transparent 49%), 
+    radial-gradient(at 74% 89%, hsla(30,98%,65%,1) 0, transparent 51%), 
+    radial-gradient(at 53% 75%, hsla(174,94%,68%,1) 0, transparent 45%);
+    }
+
+    .circle1,.circle2{
+        animation: float 6s ease-in-out infinite;
+    } 
+
+    @keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+    </style>
+</head>
+<body class="m-0 p-0">
+    <!-- People counter HTML -->
+    <div class="wrpper w-full h-screen bg-slate-600 grid place-content-center">
+        <h1 class="text-white text-3xl text-center font-bold">People Counter</h1>
+        <div class="p-5 flex flex-col gap-5">
+            <h1 class="text-white text-[25px]">Increment & Decrement</h1>
+            <div class="flex w-full justify-around  py-4 bg-white text-[20px] font-bold flex-grow-1 rounded-sm">
+                <button onclick="decrement()" class="border-r-4 border-rose-500 grid place-content-center cursor-pointer minus w-4/12"><i class="ri-subtract-line"></i></button>
+                <div class="select-none counter w-4/12 text-center">0</div>
+                <button  class="border-l-4 border-rose-500 grid place-content-center  cursor-pointer  plus w-4/12"><i class="ri-add-line"></i></button>
+            </div>
+            <button class="w-full bg-yellow-400 p-2 cursor-pointer font-bold border-none reset">
+                RESET
+            </button>
+        </div>
+    </div>
+
+    
+    <script src="/Javascript/peopleCounter.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+* {
+    margin: 0%;
+    padding:0%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    border: 0.1px solid white;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.heading {
+    font-size: 4rem;
+    margin: 2rem 0rem 1rem;
+    text-align: center;
+    /* border: 1px solid white; */
+    height: 100px;
+}
+
+.start-heading {
+    margin-top: 50px;
+}
+
+.Name {
+    height: 80px;
+    width: 700px;
+    display: flex;
+    margin-top: 10px;
+
+}
+
+.First-Name {
+    height: 40px;
+    width: 300px;
+    margin-right: 40px;
+    border-radius: 8px;
+}
+
+.Last-Name {
+    height: 40px;
+    width: 300px;
+    border-radius: 8px;
+}
+
+.Enter {
+    margin-top: 5px;
+    font-size: 12px;
+    margin-top: 6.4px;
+    padding: 1.6px;
+}
+
+.customer-Name {
+    font-size: 32px;
+}
+
+.input-Add {
+    width: 700px;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.form-content {
+    border-top: 1px solid white;
+}
+
+.input-Add2 {
+    width: 700px;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 25px;
+}
+
+.Name2 {
+    height: 80px;
+    width: 700px;
+    display: flex;
+    margin-top: 25px;
+
+}
+
+.zip-file {
+    height: 40px;
+    width: 300px;
+    border-radius: 8px;
+}
+
+.input-Add2 {
+    height: 40px;
+    width: 300px;
+    border-radius: 8px; 
+}
+
+#select-country {
+    width: 450px;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 80px;
+}
+
+.contact-sec {
+    font-size: 32px;
+    margin-top: 30px; 
+}
+
+.Details-control {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.div-select {
+    margin-top: 5px;
+    margin-bottom: 1rem;
+}
+
+.rating1 {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.opt1 {
+    display: flex;
+    gap: 1rem;
+}
+
+.type-submit {
+    margin-top: 20px;
+    text-align: center;
+    height: 1rem;
+}
+
+/* button {
+    font-size: 2rem;
+    margin: 0px auto;
+    display: block;
+    color: wite;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid white;
+    background-color: #023de3;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 1px #0000;
+    box-shadow: rgb(100 100 111 / 20%) 0px 
+} */
+
+button {
+    margin: 15px auto;
+    display: block;
+    background-color: #023de3;
+    color: white;
+    border-radius: 10px;
+    font-size: 2rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid white;
+}
+
+.container {
+    /* margin-top: 32px;
+    margin-bottom: 32px;
+    padding-left: 32px;
+    padding-right: 32px; */
+
+    max-width: 50rem;
+    margin: 2rem auto;
+    padding: 0px 2rem;
+    border: 1px solid;
+}

@@ -798,7 +798,7 @@ int main()
     case 5: quit++;
             break;
 
-    default: cerr<<"Error! Enter coorect input"<<endl;
+    default: cerr<<"Error! Enter correct input"<<endl;
              cin>>choice;
     }
 

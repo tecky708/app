@@ -1,0 +1,809 @@
+#include<iostream>
+#include<fstream>
+#include<string.h>
+
+using namespace std;
+
+class Date{
+    private:
+      int dd;
+      int mm;
+      int yy;
+      void rectifyDate(){
+
+        if(dd>30){
+        dd -= 30;
+        mm++;
+      }
+
+      if(mm>12){
+        mm -= 12;
+        yy++;
+      } 
+
+}
+
+public:
+    Date(){
+        dd = 1;
+        mm = 1;
+        yy = 2023;   
+
+    }
+
+    void setDate(){
+        cout<<"enter Date: ";
+        cin>>dd;
+        cout<<"enter Month: ";
+        cin>>mm;
+        cout<<"enter Year: ";
+        cin>>yy;
+    }
+
+   void setDate(Date temp){
+    dd = temp.dd + 15;
+    mm = temp.mm;
+    yy = temp.yy;
+    rectifyDate();
+   }
+
+   void showDate()
+   {
+      cout<<dd<<"/"<<mm<<"/"<<yy;
+   }
+
+};
+
+class Menu {
+    private:
+
+    public:
+       
+       void mainMenu();
+       void studentMenu();
+       void bookMenu();
+       void issueBook();
+       void returnBook();
+};
+
+void Menu :: mainMenu()
+{
+    cout<<"-------------------Main Menu-------------------"<<endl;
+    cout<<"1. Student Menu\n2. Book Menu\n3. Issue Menu\n4. Return Book\n5. Exit"<<endl;
+}
+
+void Menu :: studentMenu(){
+
+    cout<<"----------------------Student Menu--------------------"<<endl;
+    cout<<"1. New Entry\n2. Modify Entry\n3. Search Entry\n4. Delete Entry"<<endl;
+    cout<<"5. View Student Details\n6. Go back to main menu"<<endl;
+
+}
+
+void Menu :: bookMenu(){
+
+    cout<<"Book Menu"<<endl;
+    cout<<"1. New Entry\n 2. Modify Entry\n 3. Search Entry\n 4. Delete Entry"<<endl;
+    cout<<"5. View Book Details\n 6. Go back to main menu"<<endl;
+}
+
+class BookData {
+    public:
+       char title[40];
+       char author[40];
+       char publisher[40];
+       int status;
+       float price;
+       int issuedRollNo;
+       Date issueDate;
+       Date returnDate;
+       BookData(){
+        status = 0;
+        issuedRollNo = 7779;
+       }
+};
+
+class StudentData {
+    public:
+        int rollNo;
+        char name[40];
+        char address[70];
+        char branch[30];
+        int status;
+        char bookTitle[50];
+
+        StudentData(){
+
+            status =0;
+        }
+
+};
+
+class Book{
+
+    public:
+       void inputDetails();
+       void modifyDetails();
+       void searchDetails();
+       void deleteDetails();
+       void viewAllBookDetails();
+
+};
+
+void Book :: inputDetails(){
+    fstream file;
+    file.open("bookDataBase.dat", ios :: out | ios :: binary | ios :: app);
+
+    if(!file){
+        cerr<<"Error"<<endl;
+        return;
+    }
+
+    BookData Book;
+    cout<<"enter book's title: ";
+    cin>>Book.title;
+    cout<<"enter book's author: ";
+    cin>>Book.author;
+    cout<<"enter book's publisher: ";
+    cin>>Book.publisher;
+    cout<<"enter book's price: ";
+    cin>>Book.price;
+
+    file.write((char*)&Book, sizeof(BookData));
+    file.close();
+}
+
+void Book :: modifyDetails(){
+    fstream fsp;
+    fsp.open("bookDataBase.dat", ios :: binary | ios :: in | ios :: out | ios :: ate);
+
+    if(!fsp){
+        cout<<"Error"<<endl;
+    }
+
+    fsp.seekg(0, ios :: beg);
+
+    BookData Book;
+    char title[35];
+    cout<<"enter title of the book to modify: ";
+    cin>>title;
+
+    while(fsp.read((char*)&Book, sizeof(BookData))){
+        if(strcmp(Book.title, title) == 0){
+            int position = (-1)*sizeof(BookData);
+            fsp.seekp(position, ios :: cur);
+
+            cout<<"enter new book's title: ";
+            cin>>Book.title;
+            cout<<"enter new book's author: ";
+            cin>>Book.author;
+            cout<<"enter new book's publisher: ";
+            cin>>Book.publisher;
+            cout<<" enter new book's price: ";
+            cin>>Book.price;
+
+            cout<<"Record Updated"<<endl;
+            cin.get();
+            cin.get();
+            return;
+        }
+    }
+
+    cout<<"Book Not Found"<<endl;
+    cin.get();
+    cin.get();
+    return;
+
+}
+
+
+void Book :: searchDetails(){
+    fstream fsp;
+    fsp.open("bookDataBase.dat", ios :: in | ios :: binary);
+    
+    if(!fsp)
+    {
+        cout<<"Error in opening"<<endl;
+        cin.get();
+        cin.get();
+        return;
+    }
+
+    BookData Book;
+    char title[35];
+
+    cout<<"enter title of the book to modify: ";
+    cin>>title;
+
+    while(fsp.read((char*)&Book, sizeof(BookData))){
+        if(strcmp(Book.title, title) == 0){
+            cout<<"Book title: "<<Book.title<<endl;
+            cout<<"Book author: "<<Book.author<<endl;
+            cout<<"Book price: "<<Book.price<<endl;
+            cout<<"Book publisher: "<<Book.publisher<<endl;
+
+            if(Book.status == 1){
+                cout<<"Issued Status: "<<Book.issuedRollNo<<endl;
+                cout<<"Issued Date: ";
+                Book.issueDate.showDate();
+                cout<<endl<<"Return Date: ";
+                Book.returnDate.showDate();
+                cout<<endl;
+
+            }
+
+            else{
+                cout<<"Issued Status: None"<<endl;
+            }
+
+            cin.get();
+            cin.get();
+            return;
+        }
+    }
+
+    cout<<"Book Not Found"<<endl;
+    cin.get();
+    cin.get();
+    return;
+
+}
+
+void Book :: deleteDetails(){
+    fstream fsp,temp;
+    fsp.open("bookDataBase.dat", ios :: binary | ios :: in);
+    temp.open("temp.dat", ios :: binary | ios :: out);
+
+    char title[40];
+    BookData Book;
+    int Flag = 0;
+
+    cout<<"enter book title to remove: "<<endl;
+    cin>>title;
+
+    while(fsp.read((char*)&Book, sizeof(BookData))){
+        if(strcmp(Book.title, title) ==0)
+         {
+            Flag++;
+            continue;
+        }
+
+        temp.write((char*)&Book, sizeof(BookData));
+    }
+
+    fsp.close();
+    temp.close();
+    remove("bookDataBase.dat");
+
+    if(Flag == 1)
+     cout<<"Record Deleted";
+
+    else{
+     cout<<"Record Not Found";
+
+    }
+
+    cin.get();
+    cin.get();
+    return;
+
+}
+
+
+
+void Book :: viewAllBookDetails(){
+    fstream fsp;
+    fsp.open("bookDataBase.dat", ios :: binary | ios :: in);
+
+    BookData Book;
+    int choice = 1;
+
+    while(fsp.read((char*)&Book, sizeof(BookData) &&choice)){
+
+        system("clear");
+        cout<<"Book Title: "<<Book.title<<endl;
+        cout<<"Book Author: "<<Book.author<<endl;
+        cout<<"Book Publisher: "<<Book.publisher<<endl;
+        cout<<"Book Price: "<<Book.price<<endl;
+        if(Book.status ==1)
+        {
+            cout<<"Issues Status: "<<Book.issuedRollNo<<endl;
+            cout<<"Issued Date: ";
+            Book.issueDate.showDate();
+            cout<<endl<<"Return Date: ";
+            Book.returnDate.showDate();
+        }
+
+        else{
+          cout<<"Issued Status: None"<<endl;
+
+        }
+
+        cout<<"Press 1 to view the next book else press 0: ";
+        cin>>choice;
+    }
+
+    cin.get();
+    cin.get();
+    return;
+}
+
+class Student {
+    public:
+    void inputDetails();
+    void modifyDetails();
+    void searchDetails();
+    void deleteDetails();
+    void viewAllStudentDetails();
+};
+
+
+void Student :: inputDetails(){
+    
+    fstream file;
+    file.open("studentDataBase.dat", ios :: out | ios :: app | ios :: binary );
+
+    if(!file){
+        cout<<"Error 404"<<endl;
+        return;
+    }
+
+    StudentData Student;
+    cout<<"enter student's roll no. : ";
+    cin>>Student.rollNo;
+    cout<<"enter student's name: ";
+    cin>>Student.name;
+    cout<<"enter student's address: ";
+    cin>>Student.address;
+    cout<<"enter student's branch: ";
+    cin>>Student.branch;
+
+    cout<<endl<<"Record added to DataBase!";
+
+    file.write((char*)&Student, sizeof(StudentData));
+    file.close();
+
+}
+
+void Student :: modifyDetails(){
+    fstream fp;
+    fp.open("studentDataBase.dat", ios :: binary | ios :: in | ios :: out | ios :: ate);
+
+    if(!fp)
+    {
+        cerr<<"Error 404"<<endl;
+        return;
+    }
+
+    fp.seekg(0, ios :: beg);
+
+    int target;
+    cout<<"enter student's roll no. to modify: ";
+    cin>>target;
+
+    StudentData Student;
+
+    while(fp.read((char*)&Student, sizeof(StudentData))){
+        if(target == Student.rollNo){
+            int position = (-1) * sizeof(StudentData);
+            fp.seekp(position, ios :: cur);
+
+            cout<<"enter student's new roll no. : ";
+            cin>>Student.rollNo;
+            cout<<"enter student's new name: ";
+            cin>>Student.name;
+            cout<<"enter student's new address: ";
+            cin>>Student.address;
+            cout<<"enter student's new branch: ";
+            cin>>Student.branch;
+
+           fp.write((char*)&Student, sizeof(StudentData));
+           fp.close();
+
+           cout<<"Record Updatted"<<endl;
+
+           return;
+        }
+    }
+
+    cout<<"ROll no. Not Found"<<endl;
+    return;
+}
+
+void Student :: searchDetails(){
+    fstream ofp;
+    ofp.open("studentDataBase.dat", ios :: in | ios :: binary);
+
+    if(!ofp){
+
+        cerr<<"Unable to open file"<<endl;
+        return;
+    }
+
+    int target;
+    cout<<"enter roll no. to search: ";
+    cin>>target;
+
+    StudentData Student;
+
+    while(ofp.read((char*)&Student, sizeof(Student))){
+        if(target == Student.rollNo)
+        {
+            cout<<"Record Found!"<<endl;
+            cout<<"Student's name: "<<Student.name<<endl;
+            cout<<"Student's roll no. : "<<Student.rollNo<<endl;
+            cout<<"Student's branch: "<<Student.branch<<endl;
+            cout<<"Student's address: "<<Student.address<<endl;
+
+            if(Student.status == 1)
+            {
+                cout<<"Issued bokk name: "<<Student.bookTitle<<endl;
+
+            }
+
+            else{
+                cout<<"No book is issued for thid roll no."<<endl;
+            }
+
+            cin.get();
+            cin.get();
+            return;
+        }
+    }
+
+    cout<<"Record Not Found!"<<endl;
+    return;
+
+}
+
+void Student :: viewAllStudentDetails(){
+
+    
+    fstream ifp;
+    ifp.open("studentDataBase.dat", ios :: in | ios :: binary);
+
+    if(!ifp)
+    {
+        cerr<<"Error 404"<<endl;
+        return;
+    }
+
+    StudentData Student;
+    int choice = 1;
+
+    while(ifp.read((char*)&Student, sizeof(Student))&&choice){
+
+        
+        cout<<"Student's name: "<<Student.name<<endl;
+        cout<<"Student's Roll No. : "<<Student.rollNo<<endl;
+        cout<<"Student's address: "<<Student.address<<endl;
+        cout<<"Student's branch: "<<Student.branch<<endl;
+
+        if(Student.status == 1){
+
+            cout<<"Issued book name: "<<Student.bookTitle<<endl;
+
+        }
+
+        else
+        {
+            cout<<"No book is issued for this roll no."<<endl;
+        }
+
+        cout<<"To view next student press 1 else press 0: ";
+        cin>>choice;
+    }
+    return;
+}
+
+void Student :: deleteDetails(){
+
+    fstream file;
+    file.open("studentDataBase.dat", ios :: in | ios :: binary);
+    fstream temp;
+    temp.open("temp.dat", ios :: out | ios :: binary);
+
+    StudentData Student;
+    int target;
+    int flag = 0;
+
+    cout<<"enter roll no. to delete data: ";
+    cin>>target;
+
+    while(file.read((char*)&Student, sizeof(Student))) 
+    {
+        if(Student.rollNo == target)
+        {
+            flag++;
+            continue;
+        }
+
+        temp.write((char*)&Student, sizeof(Student));
+    }
+
+    file.close();
+    temp.close();
+    remove("studentDataBase.dat");
+    rename("temp.dat","studentDataBase.dat");
+
+    if(flag==1)
+    {
+        cout<<"Record Deleted"<<endl;
+    }
+
+    else{
+        cout<<"Roll no. Not Found"<<endl;
+    }
+
+    cin.get();
+    cin.get();
+    return;
+
+}
+
+void Menu :: issueBook()
+{
+    fstream sp, bp;
+    sp.open("studentDataBase.dat", ios :: in | ios :: out | ios :: ate | ios :: binary);
+    bp.open("bookDataBase.dat", ios :: in | ios :: out | ios :: ate | ios :: binary);
+    bp.seekg(0, ios :: beg);
+    sp.seekg(0, ios :: beg);
+
+    int rollNo, flagS = 0, flagB = 0, position;
+    char title[40];
+    StudentData Student;
+    BookData Book;
+
+    cout<<"enter student's roll no. to issue book: ";
+    cin>>rollNo;
+
+    while(sp.read((char*)&Student, sizeof(StudentData)))
+    {
+        if(Student.rollNo == rollNo)
+        {
+            position = (-1)*sizeof(StudentData);
+            sp.seekp(position, ios :: cur);
+            flagS++;
+            break;
+        }
+    }
+
+    if(flagS != 1)
+    {
+        cout<<"Record Not Found"<<endl;
+        cin.get();
+        cin.get();
+        sp.close();
+        bp.close();
+        return;
+    }
+
+    cout<<"Enter book title to be issued: ";
+    cin>>title;
+
+    while(bp.read((char*)&Book, sizeof(BookData)))
+    {
+        if(strcmp(Book.title,title) == 0)
+        {
+            position = (-1)*sizeof(BookData);
+            bp.seekp(position, ios :: cur);
+            flagB++;
+            break;
+        }
+    }
+
+    if(flagB != 1){
+        cout<<"Record Not Found"<<endl;
+        cin.get();
+        cin.get();
+        sp.close();
+        bp.close();
+        return;
+    }
+
+    if(Student.status != 1 && Book.status != 1){
+        strcpy(Student.bookTitle,title);
+        Student.status = 1;
+        Book.status = 1;
+        Book.issuedRollNo = Student.rollNo;
+        Book.issueDate.setDate();
+        Book.returnDate.setDate();
+        sp.write((char*)&Student, sizeof(StudentData));
+        bp.write((char*)&Book, sizeof(BookData));
+        sp.close();
+        bp.close();
+    }
+
+    else {
+        if(Student.status == 1){
+            cout<<"Student's account is already full"<<endl;
+            cin.get();
+            cin.get();
+            sp.close();
+            bp.close();
+            return;
+        }
+    }
+}
+
+void Menu :: returnBook(){
+
+    fstream sp, bp;
+    sp.open("studentDataBase.dat", ios :: in | ios :: out | ios :: ate | ios :: binary);
+    bp.open("bookDataBase.dat", ios :: in | ios :: out | ios :: ate | ios :: binary);
+    bp.seekg(0, ios :: beg);
+    sp.seekg(0, ios :: beg);
+
+    int rollNo, flagS = 0, flagB = 0, position;
+    char title[40];
+    StudentData Student;
+    BookData Book;
+
+    cout<<"Enter Student's roll no. to return book: ";
+    cin>>rollNo;
+
+    while(sp.read((char*)&Student, sizeof(StudentData))){
+        if(Student.rollNo == rollNo){
+            position = (-1)*sizeof(StudentData);
+            sp.seekp(position, ios :: cur);
+            flagS++;
+            break;
+
+        }
+    }
+
+    if(flagS != 1){
+        cout<<"Record Not Found"<<endl;
+        cin.get();
+        cin.get();
+        sp.close();
+        bp.close();
+        return; 
+    }
+
+    while(bp.read((char*)&Book, sizeof(BookData))){
+        if(strcmp(Book.title,Student.bookTitle) == 0){
+            position = (-1)*sizeof(BookData);
+            bp.seekp(position, ios :: cur);
+            flagB++;
+            break;
+        }
+    }
+    
+    if(flagB != 1){
+        cout<<"Record Not Found"<<endl;
+        cin.get();
+        cin.get();
+        sp.close();
+        bp.close();
+        return;
+    }
+
+    if(Student.status ==1 && Book.status == 1){
+       
+       Student.status = 0;
+       Book.status = 0;
+       Book.issuedRollNo = 7779;
+       sp.write((char*)&Student, sizeof(StudentData));
+       bp.write((char*)&Book, sizeof(BookData));
+       sp.close();
+       bp.close();
+        
+    }
+
+    else{
+        if(Student.status == 0){
+            cout<<"Student's account is already full"<<endl;
+            cin.get();
+            cin.get();
+            sp.close();
+            bp.close();
+            return;
+        }
+
+        else {
+            cout<<"Book is already issued"<<endl;
+            cin.get();
+            cin.get();
+            sp.close();
+            bp.close();
+            return;
+        }
+    }
+
+}
+
+int main()
+{
+    Menu menu;
+    int quit = 0;
+    char choice[3];
+  
+   while(!quit)
+   {
+
+    menu.mainMenu();
+    cout<<"Enter your choice: "<<endl;
+    cin>>choice;
+    switch(atoi(choice)) //*atoi() converts numbers in string to integers(i.e "23" to 23) to protect user from giving 
+                         // any character input
+    {
+        case 1: {
+                    
+                    menu.studentMenu();
+                    cout<<"Enter your choice: "<<endl;
+                    cin>>choice;
+                    Student S1;
+                    switch(atoi(choice))
+                    {
+                        case 1: S1.inputDetails();
+                                break;
+
+                        case 2: S1.modifyDetails();
+                                break;
+
+                        case 3: S1.searchDetails();
+                                break;
+                        
+                        case 4: S1.deleteDetails();
+                                break;
+                        
+                        case 5: S1.viewAllStudentDetails();
+                                break;
+
+                        case 6: break;
+
+                        default: cout<<"Wrong Input Recieved"<<endl;
+                    }
+                    break;
+            }
+
+    case 2: {
+                   
+                   menu.bookMenu();
+                   cout<<"Enter your choice: "<<endl;
+                   cin>>choice;
+                   Book B1;
+                   switch(atoi(choice))
+                   {
+                       
+                       case 1: B1.inputDetails();
+                               break;
+
+                       case 2: B1.modifyDetails();
+                               break;
+                       case 3: B1.searchDetails();
+                               break;
+                       case 4: B1.deleteDetails();
+                               break;
+
+                       case 5: B1.viewAllBookDetails();
+                               break;
+
+                       case 6: break;
+
+                       default: cout<<"Wrong Input Recieved"<<endl;
+                               
+                   }
+                   break;
+
+            }
+
+    case 3: menu.issueBook();
+            break;
+
+    case 4: menu.returnBook();
+            break;
+    
+    case 5: quit++;
+            break;
+
+    default: cerr<<"Error! Enter correct input"<<endl;
+             cin>>choice;
+    }
+
+   }
+
+   return 0;
+
+}

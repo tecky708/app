@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assests/location.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="wrapper w-full overflow-hidden">
+        <!-- common bg-video -->
+        <div class="bg-wrapper">
+            <video src="./assests/HomePage video.mp4" autoplay="1" muted="1" loop="1" class="bg-video"></video>
+        </div>
+
+        <!-- common UI -->
+        <div class="common-ui w-full flex items-center justify-between flex-col gap-10 mt-[3rem] relative">
+            
+            <h1 class="name border-b-2 border-b-black font-bold drop-shadow-md relative">WEATHER APP <img src="./assests/sun.png" width="50" height="50" class="sun-logo">
+            <img src="./assests/raindrop.png" width="50" height="50" class="rain-drop"></h1>
+
+            <div class="tab-container flex w-full justify-evenly items-center gap-5">
+                <p class="tab" user-weather>Your Weather</p>
+                <p class="tab" search-weather>Search Weather</p>
+            </div>
+        </div>
+
+        <!-- Location permission UI -->
+        <div class="grant-location-container w-full  flex-col items-center mt-[3rem] gap-5">
+            <img src="./assests/location.png" alt="" loading="lazy" height="100" width="100" class="gps">
+            <p class="font-bold text-2xl text-white location">Grant Loaction Access</p>
+            <p class="font-bold text-2xl text-white location">Allow access to get information</p>
+            <button class="btn" grant-access>Grant Access</button>
+        </div>
+
+        <!-- Search UI -->
+        <form class="form-container hidden" >
+            <input type="text" name="text" id="search-city" placeholder="Search for city" class="input-field text-white" autocomplete="off" >
+            <button search-btn class="p-1 bg-gray-200 rounded" type="submit">Search</button>
+        </form>
+
+
+        <!-- Loading Screen container UI-->
+        <div class="loading-container hidden">
+            <img src="./assests/loading.gif" alt="" width="150" height="150">
+            <p class="text-white text-xl">Loading..</p>
+        </div>
+
+        <!-- Weather Response UI -->
+        <div class="response-container text-2xl hidden">
+            <div class="name-flag">
+                <h2 city-name class="inline-block  city-font font-bold"></h2>
+                <img flag width="50" height="50">
+            </div>
+
+            <div class="temp-cloud-info flex flex-col items-center gap-1 w-full">
+                <p cloud-condition class="city-font"></p>
+                <img cloud-img width="70" height="70">
+                <div class="flex">
+                    <p temp></p> &#176;C
+                </div>
+            </div>
+
+            <div class="parent-3-box">
+                <div class="box box-1">
+                    <img src="./assests/windspeed.jpg" alt="" width="80" height="80">
+                    <p>Windspeed</p>
+                    <p windspeed></p>
+                </div>
+                <div class="box box-2">
+                    <img src="./assests/humidity.png" alt="" width="80" height="80">
+                    <p>Humidity</p>
+                    <p humidity></p>
+                </div>
+                <div class="box box-3">
+                    <img src="./assests/cloud.png" alt="" width="80" height="80">
+                    <p>Clouds</p>
+                    <p clouds></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+import java.util.Scanner;
+
+class Guesser
+{
+    int guessNum;
+    
+    public int guessNumber()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Guesser kindly Guess the number : ");
+        guessNum = sc.nextInt();
+
+        return guessNum;
+    }
+    
+}
+
+
+class player
+{
+    int pguessNum;
+
+    public int guessNumber()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Player kindly guess the number : ");
+        pguessNum = sc.nextInt();
+
+        return pguessNum;
+    }
+}
+
+
+class umpire
+{
+    int numFromguesser;
+    int numFromplayer1;
+    int numFromplayer2;
+    int numFromplayer3;
+
+    public void collectNumfromGuesser()
+    {
+        Guesser g = new Guesser();
+
+        numFromguesser = g.guessNumber();
+    }
+
+    public void collectNumfromplayer()
+    {
+        player p1 = new player();
+        player p2 = new player();
+        player p3 = new player();
+
+        numFromplayer1 = p1.guessNumber();
+        numFromplayer2 = p2.guessNumber();
+        numFromplayer3 = p3.guessNumber();
+
+    }
+    void compare()
+    {
+        if (numFromguesser == numFromplayer1)
+        {
+            if (numFromguesser == numFromplayer2 && numFromguesser == numFromplayer3)
+            {
+                System.out.println("Game Tied all Three palyer are Guessed Correctly : ");
+            }
+            else if (numFromguesser == numFromplayer2)
+            {
+                System.out.println("COngratulations...Player 1 and Player 2 WON the Match");
+            }
+            else if (numFromguesser == numFromplayer3)
+            {
+                System.out.println("Congratulations...Player 1 and Player 2 WON the Match");
+            }
+            else
+            {
+                System.out.println("Congratulations...Player 1 WON the Match");
+            }
+        }
+        else if (numFromguesser == numFromplayer2)
+        {
+            if (numFromguesser == numFromplayer3)
+            {
+                System.out.println("Congratulations...Player 2 and Player 3 WON the Game");
+            }
+            else
+            {
+                System.out.println("Congratulations...Player 2 WON the Match");
+            }
+        }
+        else if (numFromguesser == numFromplayer3)
+        {
+            System.out.println("Congratulations...Player 3 WON the Game");
+        }
+        else
+        {
+            System.out.println("Game Lost ! Try Again");
+        }
+    }
+}
+
+
+public class gusser_game {
+    public static void main(String[] args) {
+
+        umpire U = new umpire();
+
+        U.collectNumfromGuesser();
+        U.collectNumfromplayer();
+        U.compare();
+    }    
+}
+
+

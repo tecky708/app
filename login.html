@@ -1,86 +1,149 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <style>
-        body {
-            font-family: Calibri, Helvetica, sans-serif;
-            background: linear-gradient(90deg, #ffffff, #f2f2f2);
-        }
 
-        button {
-            background-color: #4CAF50;
-            width: 100%;
-            color: white;
-            padding: 15px;
-            margin: 10px 0px;
-            border: none;
-            cursor: pointer;
-            border-radius: 15px;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100%;
+        background-color: #8bc6ec;
+        background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
 
-        form {
-            border-radius: 15px;
-            max-width: 340px;
-            margin: 50px auto;
-
-            padding: 5px 15px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            margin: 8px 0;
-            padding: 12px 20px;
-            display: block; /* Changed from inline-block to block */
-            border: 2px solid green;
-            border-radius: 15px;
-            box-sizing: border-box;
-        }
-
-        button:hover {
-            opacity: 0.7;
-        }
-
-        .cancelbtn {
-            width: 100%;
-            padding: 10px;
-            background-color: #ff4a4a;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .container {
-            padding: 25px;
-        }
-
-        h1 {
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <!-- <center>
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .login-container {
+        position: relative;
+        width: 400px;
+        height: 450px;
+        background-color: #0099ff68;
+        border: 2px solid white;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         
-    </center> -->
-    <form>
-        <div class="container">
-            <h2>Student Registration Form</h2>
-            <hr>
-            <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter Username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter Password" name="password" required>
-            <button type="submit">Login</button>
-            <input type="checkbox" id="remember" checked="checked">
-            <label for="remember">Remember me</label>
-            <button type="button" class="cancelbtn">Cancel</button>
-            <p><a href="#">Forgot password?</a></p>
-        </div>
-    </form>
-</body>
+      }
+      h2 {
+        font-size: 2rem;
+        color: white;
+        text-align: center;
+      }
+      .input-container {
+        width: 300px;
+        margin: 30px 0;
+        border-bottom: 2px solid white;
+        transition: 1s;
+      }
+      .input-container input {
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1em;
+        color: white;
+        padding: 0 8px 0 5px;
+      }
+      .input-container .icon {
+        position: absolute;
+        right: 8px;
+        color: white;
+        font-size: 2em;
+        line-height: 80px;
+      }
+      .remember-forgot {
+        margin: -15px 0 15px;
+        font-size: 0.9em;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+      }
+      .remember-forgot label input {
+        margin-right: 3px;
+      }
+      .remember-forgot a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .remember-forgot a:hover {
+        text-decoration: underline;
+      }
+      button {
+        width: 100%;
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 45px;
+        cursor: pointer;
+        font-size: 1em;
+        color: black;
+        font-weight: bold;
+      }
+      button:hover {
+        background: rgb(115, 112, 112);
+      }
+      .register-link {
+        font-size: 0.9em;
+        color: white;
+        text-align: center;
+        margin: 25px 0 10px;
+      }
+      .register-link p a {
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .register-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="login-container">
+        <form action="">
+          <h2>Student Login Form</h2>
+          <div class="input-container">
+            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+            <input type="email" required placeholder="Enter Username" />
+          </div>
+          <div class="input-container">
+            <span class="icon"
+              ><ion-icon name="lock-closed-outline"></ion-icon
+            ></span>
+            <input type="password" required placeholder="Enter Password" />
+          </div>
+          <div class="remember-forgot">
+            <label><input type="checkbox" name="" id="" />Remember Me</label>
+            <a href="#">Forgot Password?</a>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </section>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
+
